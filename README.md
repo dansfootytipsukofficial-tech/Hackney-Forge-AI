@@ -1,1 +1,323 @@
-# Hackney-Forge-AI
+# 🔥 Hackney Forge AI
+
+> London's realest AI platform. No filters, no BS, just pure AI power with proper vibes.
+
+Hackney Forge AI is a modern, full-stack AI platform featuring specialized AI gang members from different parts of Hackney, custom AI model creation, gamification, and subscription-based access. Built with React, Node.js, Express, MongoDB, OpenAI, and Hugging Face.
+
+## ✨ Features
+
+### AI Gang Members
+- **Dalston AI** - Creative Director for writing, branding, and innovative ideas
+- **Clapton AI** - Music Producer for beats, lyrics, and audio
+- **Shoreditch AI** - Tech Developer for coding and digital solutions
+- **Stoke Newington AI** - Business Strategist for entrepreneurship and growth
+- **Hackney Wick AI** - Lifestyle Coach for personal development and wellness
+- **Hackney Boss AI** - Chief Overseer for strategic guidance and quality control
+
+### Core Features
+- 🤖 **Chat with AI Gang Members** - Each with unique personalities and specialties
+- 🎨 **Custom AI Creation** - Build and train your own AI models with custom data
+- 🎮 **Gamification System** - Earn gang points, complete challenges, level up
+- 💰 **Flexible Pricing** - Free trial (3 queries), monthly sub (£5), or pay-per-query (£0.50)
+- 🗣️ **London Slang** - Authentic London vibes without Cockney stereotypes
+- 🔓 **Uncensored Responses** - Real talk, direct answers
+
+## 🚀 Tech Stack
+
+### Frontend
+- React 18
+- Vite
+- React Router
+- Axios
+- CSS3 with custom design system
+
+### Backend
+- Node.js
+- Express
+- MongoDB with Mongoose
+- JWT Authentication
+- Stripe for payments
+
+### AI Integration
+- OpenAI API (GPT-3.5-turbo, GPT-4)
+- Hugging Face Inference API
+- Custom London slang injection system
+
+## 📦 Installation
+
+### Prerequisites
+- Node.js 18+ 
+- MongoDB (local or Atlas)
+- OpenAI API key
+- Hugging Face API key (optional)
+- Stripe API keys (for payments)
+
+### 1. Clone the Repository
+```bash
+git clone https://github.com/dansfootytipsukofficial-tech/Hackney-Forge-AI.git
+cd Hackney-Forge-AI
+```
+
+### 2. Install Dependencies
+```bash
+# Install root dependencies
+npm install
+
+# Install backend dependencies
+cd backend
+npm install
+
+# Install frontend dependencies
+cd ../frontend
+npm install
+```
+
+### 3. Configure Environment Variables
+
+Create `backend/.env` file (use `backend/.env.example` as template):
+```env
+# Server
+PORT=5000
+NODE_ENV=development
+
+# MongoDB
+MONGODB_URI=mongodb://localhost:27017/hackney-forge-ai
+
+# JWT Secret
+JWT_SECRET=your_super_secret_jwt_key_change_this_in_production
+
+# OpenAI API
+OPENAI_API_KEY=your_openai_api_key_here
+
+# Hugging Face API
+HUGGINGFACE_API_KEY=your_huggingface_api_key_here
+
+# Stripe
+STRIPE_SECRET_KEY=your_stripe_secret_key_here
+STRIPE_WEBHOOK_SECRET=your_stripe_webhook_secret_here
+
+# Business Model
+FREE_TRIAL_QUERIES=3
+SUBSCRIPTION_PRICE_MONTHLY=5.00
+PAY_PER_QUERY_PRICE=0.50
+CURRENCY=GBP
+
+# Frontend URL
+FRONTEND_URL=http://localhost:5173
+```
+
+### 4. Seed the Database
+```bash
+cd backend
+node src/seed.js
+```
+
+This will populate the database with:
+- 5 AI gang members (Dalston, Clapton, Shoreditch, Stoke Newington, Hackney Wick)
+- Initial challenges for gamification
+
+### 5. Run the Application
+
+**Development mode (recommended):**
+```bash
+# From root directory - runs both frontend and backend
+npm run dev
+```
+
+**Or run separately:**
+```bash
+# Terminal 1 - Backend
+cd backend
+npm run dev
+
+# Terminal 2 - Frontend
+cd frontend
+npm run dev
+```
+
+The application will be available at:
+- Frontend: http://localhost:5173
+- Backend API: http://localhost:5000
+
+## 🏗️ Project Structure
+
+```
+hackney-forge-ai/
+├── backend/
+│   ├── src/
+│   │   ├── config/
+│   │   │   └── database.js          # MongoDB connection
+│   │   ├── models/
+│   │   │   ├── User.js              # User schema with subscription info
+│   │   │   ├── AIGangMember.js      # AI gang member definitions
+│   │   │   ├── CustomAI.js          # Custom AI models
+│   │   │   ├── Transaction.js       # Payment transactions
+│   │   │   └── Challenge.js         # Gamification challenges
+│   │   ├── routes/
+│   │   │   ├── auth.js              # Authentication endpoints
+│   │   │   ├── ai.js                # AI query endpoints
+│   │   │   ├── user.js              # User profile endpoints
+│   │   │   ├── subscription.js      # Payment/subscription endpoints
+│   │   │   └── gamification.js      # Challenges/points endpoints
+│   │   ├── middleware/
+│   │   │   └── auth.js              # JWT auth & query limit middleware
+│   │   ├── services/
+│   │   │   ├── openaiService.js     # OpenAI integration
+│   │   │   └── huggingfaceService.js # Hugging Face integration
+│   │   ├── server.js                # Express app setup
+│   │   └── seed.js                  # Database seeding script
+│   ├── .env.example
+│   └── package.json
+├── frontend/
+│   ├── src/
+│   │   ├── components/
+│   │   │   └── Navbar.jsx           # Navigation component
+│   │   ├── context/
+│   │   │   └── AuthContext.jsx      # Authentication context
+│   │   ├── pages/
+│   │   │   ├── Home.jsx             # Landing page
+│   │   │   ├── Login.jsx            # Login page
+│   │   │   ├── Register.jsx         # Registration page
+│   │   │   ├── Dashboard.jsx        # User dashboard
+│   │   │   ├── GangMembers.jsx      # AI chat interface
+│   │   │   ├── CustomAI.jsx         # Custom AI creation
+│   │   │   ├── Subscription.jsx     # Subscription management
+│   │   │   └── Gamification.jsx     # Challenges & leaderboard
+│   │   ├── services/
+│   │   │   └── api.js               # API service layer
+│   │   ├── App.jsx                  # Main app component
+│   │   ├── main.jsx                 # React entry point
+│   │   └── index.css                # Global styles
+│   ├── index.html
+│   ├── vite.config.js
+│   └── package.json
+├── vercel.json                       # Vercel deployment config
+├── netlify.toml                      # Netlify deployment config
+├── package.json                      # Root package.json
+└── README.md
+```
+
+## 🎯 Usage
+
+### 1. Create an Account
+- Visit the homepage and click "Sign Up"
+- Get 3 free queries to try the platform
+
+### 2. Chat with AI Gang Members
+- Navigate to "AI Gang" page
+- Select a gang member based on your needs
+- Start chatting - responses include London slang and are uncensored
+
+### 3. Create Custom AI
+- Go to "Custom AI" page
+- Fill in your AI details and training data
+- Use your custom AI for specialized tasks
+
+### 4. Complete Challenges
+- Visit "Challenges" page
+- Complete challenges to earn gang points
+- Level up every 100 points
+
+### 5. Upgrade Subscription
+- When free queries run out, visit "Subscription" page
+- Choose monthly unlimited (£5/month) or pay-per-query (£0.50)
+
+## 🔑 API Endpoints
+
+### Authentication
+- `POST /api/auth/register` - Create new account
+- `POST /api/auth/login` - Login
+
+### AI Queries
+- `GET /api/ai/gang-members` - List all AI gang members
+- `POST /api/ai/query/:gangMemberId` - Query specific gang member
+- `POST /api/ai/boss-query` - Query Hackney Boss AI
+- `POST /api/ai/custom-ai` - Create custom AI
+- `GET /api/ai/custom-ai` - Get user's custom AIs
+- `POST /api/ai/custom-ai/:customAIId/query` - Query custom AI
+
+### User
+- `GET /api/user/profile` - Get user profile
+- `PUT /api/user/profile` - Update profile
+- `GET /api/user/stats` - Get user statistics
+
+### Subscription
+- `GET /api/subscription/status` - Get subscription status
+- `POST /api/subscription/subscribe/monthly` - Subscribe monthly
+- `POST /api/subscription/pay-per-query` - Buy single query
+- `POST /api/subscription/cancel` - Cancel subscription
+
+### Gamification
+- `GET /api/gamification/challenges` - Get challenges
+- `POST /api/gamification/challenges/:id/complete` - Complete challenge
+- `GET /api/gamification/leaderboard` - Get leaderboard
+
+## 🚢 Deployment
+
+### Vercel (Recommended)
+1. Push code to GitHub
+2. Import project in Vercel
+3. Add environment variables
+4. Deploy
+
+### Netlify
+1. Push code to GitHub
+2. Import project in Netlify
+3. Add environment variables
+4. Deploy
+
+### Manual Deployment
+```bash
+# Build frontend
+cd frontend
+npm run build
+
+# Start backend in production
+cd ../backend
+NODE_ENV=production npm start
+```
+
+## 💳 Payment Integration
+
+The platform uses Stripe for payment processing:
+- Monthly subscriptions are handled via Stripe Subscriptions
+- Pay-per-query uses Stripe Payment Intents
+- Webhooks handle subscription lifecycle events
+
+## 🎨 Design Philosophy
+
+- **London Vibes**: Authentic London slang without Cockney stereotypes
+- **Uncensored**: Direct, real responses without corporate filtering
+- **Dark Theme**: Modern dark UI with accent colors
+- **Mobile-First**: Responsive design for all devices
+
+## 🔒 Security
+
+- JWT-based authentication
+- Password hashing with bcrypt
+- Rate limiting on API endpoints
+- Environment variable protection
+- Input validation and sanitization
+
+## 📝 License
+
+MIT License - feel free to use this project for your own purposes.
+
+## 🤝 Contributing
+
+This is a demonstration project. For production use, ensure:
+- Proper error handling
+- Rate limiting
+- API key rotation
+- Database backups
+- Monitoring and logging
+- GDPR compliance
+- Terms of service
+
+## 📧 Support
+
+For questions or issues, open a GitHub issue or contact the development team.
+
+---
+
+Built with 💪 in Hackney, London. Keep it real, innit.

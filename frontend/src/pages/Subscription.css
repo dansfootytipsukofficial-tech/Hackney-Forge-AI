@@ -1,0 +1,153 @@
+.subscription-page {
+  padding: 2rem 0;
+}
+
+.current-plan {
+  margin: 2rem 0;
+  padding: 2rem;
+}
+
+.current-plan h3 {
+  margin-bottom: 1.5rem;
+}
+
+.plan-info {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+}
+
+.plan-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.plan-detail .label {
+  font-size: 0.9rem;
+  color: #888;
+  font-weight: 600;
+}
+
+.plan-detail .status {
+  font-size: 1.2rem;
+  font-weight: 700;
+  text-transform: capitalize;
+}
+
+.status.active {
+  color: var(--success-color);
+}
+
+.status.trial {
+  color: var(--warning-color);
+}
+
+.status.inactive {
+  color: var(--error-color);
+}
+
+.plans-grid {
+  margin: 3rem 0;
+}
+
+.plan-card {
+  text-align: center;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.plan-card.featured {
+  border-color: var(--accent-color);
+  transform: scale(1.05);
+  box-shadow: 0 8px 32px rgba(0, 212, 255, 0.2);
+}
+
+.plan-card .badge {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--accent-color);
+  color: var(--bg-color);
+  padding: 0.25rem 1rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.plan-card h3 {
+  margin-bottom: 1rem;
+}
+
+.price {
+  font-size: 3rem;
+  font-weight: 700;
+  margin: 1rem 0;
+  background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.price span {
+  font-size: 1.2rem;
+}
+
+.plan-description {
+  color: #ccc;
+  margin-bottom: 2rem;
+}
+
+.features-list {
+  list-style: none;
+  padding: 0;
+  margin: 2rem 0;
+  flex: 1;
+  text-align: left;
+}
+
+.features-list li {
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.features-list li:last-child {
+  border-bottom: none;
+}
+
+.plan-card button {
+  width: 100%;
+  margin-top: auto;
+}
+
+.faq-section {
+  margin-top: 4rem;
+}
+
+.faq-section h2 {
+  margin-bottom: 2rem;
+}
+
+.faq-item {
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.faq-item h4 {
+  color: var(--accent-color);
+  margin-bottom: 0.75rem;
+}
+
+.faq-item p {
+  color: #ccc;
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .plan-card.featured {
+    transform: scale(1);
+  }
+}
