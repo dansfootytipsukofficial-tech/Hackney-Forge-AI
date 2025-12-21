@@ -4,6 +4,7 @@ const AIGangMember = require('../models/AIGangMember');
 const CustomAI = require('../models/CustomAI');
 const { generateAIResponse, generateCustomAIResponse } = require('../services/openaiService');
 const { generateText, generateImage } = require('../services/huggingfaceService');
+const { aiQueryLimiter } = require('../middleware/rateLimiter');
 
 const router = express.Router();
 
@@ -19,7 +20,7 @@ router.get('/gang-members', async (req, res) => {
 });
 
 // Query specific AI gang member
-router.post('/query/:gangMemberId', auth, checkQueryLimit, async (req, res) => {
+router.post('/query/:gangMemberId', auth, checkQueryLimit, aiQueryLimiter, async (req, res) => {
   try {
     const { gangMemberId } = req.params;
     const { message, conversationHistory } = req.body;
@@ -64,7 +65,7 @@ router.post('/query/:gangMemberId', auth, checkQueryLimit, async (req, res) => {
 });
 
 // Query Hackney Boss AI (oversight AI)
-router.post('/boss-query', auth, checkQueryLimit, async (req, res) => {
+router.post('/boss-query', auth, checkQueryLimit, aiQueryLimiter, async (req, res) => {
   try {
     const { message, conversationHistory } = req.body;
 
@@ -146,7 +147,7 @@ router.post('/custom-ai', auth, async (req, res) => {
 });
 
 // Query custom AI
-router.post('/custom-ai/:customAIId/query', auth, checkQueryLimit, async (req, res) => {
+router.post('/custom-ai/:customAIId/query', auth, checkQueryLimit, aiQueryLimiter, async (req, res) => {
   try {
     const { customAIId } = req.params;
     const { message } = req.body;

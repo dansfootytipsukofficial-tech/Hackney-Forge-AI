@@ -2,6 +2,7 @@ const express = require('express');
 const { auth } = require('../middleware/auth');
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 const Transaction = require('../models/Transaction');
+const { paymentLimiter } = require('../middleware/rateLimiter');
 
 const router = express.Router();
 
@@ -22,7 +23,7 @@ router.get('/status', auth, async (req, res) => {
 });
 
 // Create monthly subscription
-router.post('/subscribe/monthly', auth, async (req, res) => {
+router.post('/subscribe/monthly', auth, paymentLimiter, async (req, res) => {
   try {
     const { paymentMethodId } = req.body;
 
@@ -94,7 +95,7 @@ router.post('/subscribe/monthly', auth, async (req, res) => {
 });
 
 // Pay per query
-router.post('/pay-per-query', auth, async (req, res) => {
+router.post('/pay-per-query', auth, paymentLimiter, async (req, res) => {
   try {
     const { paymentMethodId } = req.body;
 
