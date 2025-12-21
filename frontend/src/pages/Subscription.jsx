@@ -9,7 +9,12 @@ function Subscription() {
   const handleSubscribe = async (type) => {
     setLoading(true);
     
-    // This would integrate with Stripe in production
+    // TODO: In production, integrate with Stripe's Payment Element or Checkout
+    // This is a placeholder for demonstration purposes
+    // Real implementation should:
+    // 1. Create a Stripe Checkout Session or Payment Intent
+    // 2. Redirect user to Stripe's hosted page or show Payment Element
+    // 3. Handle webhook for subscription confirmation
     alert(`This would redirect to Stripe payment for ${type} subscription. In production, this will use the Stripe API with real payment processing.`);
     
     setLoading(false);

@@ -90,8 +90,12 @@ userSchema.methods.comparePassword = async function(candidatePassword) {
 
 // Method to check if user can make query
 userSchema.methods.canMakeQuery = function() {
-  if (this.subscriptionStatus === 'active' && 
-      (this.subscriptionType === 'monthly' || this.subscriptionType === 'pay-per-query')) {
+  if (this.subscriptionStatus === 'active' && this.subscriptionType === 'monthly') {
+    return true;
+  }
+  // For pay-per-query, they need to purchase before each query
+  // The purchase adds to freeQueriesRemaining
+  if (this.subscriptionType === 'pay-per-query' && this.freeQueriesRemaining > 0) {
     return true;
   }
   if (this.subscriptionStatus === 'trial' && this.freeQueriesRemaining > 0) {

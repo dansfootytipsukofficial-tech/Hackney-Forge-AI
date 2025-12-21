@@ -27,7 +27,7 @@ services:
       - HUGGINGFACE_API_KEY=${HUGGINGFACE_API_KEY}
       - STRIPE_SECRET_KEY=${STRIPE_SECRET_KEY}
       - STRIPE_WEBHOOK_SECRET=${STRIPE_WEBHOOK_SECRET}
-      - FRONTEND_URL=${FRONTEND_URL:-http://localhost}
+      - FRONTEND_URL=${FRONTEND_URL:-http://localhost:80}
     depends_on:
       - mongodb
     restart: unless-stopped

@@ -74,7 +74,7 @@ router.post('/boss-query', auth, checkQueryLimit, async (req, res) => {
       role: 'Chief AI Overseer',
       londonArea: 'Central Hackney',
       systemPrompt: `You are the Hackney Boss AI, the chief overseer of all AI gang members in Hackney Forge. You provide strategic guidance, coordinate between different AI specialists, and ensure quality control. You're wise, experienced, and straight-talking. You keep it real but maintain authority. You use London slang naturally but professionally.`,
-      modelName: 'gpt-4',
+      modelName: 'gpt-3.5-turbo', // Using GPT-3.5 to control costs; upgrade to GPT-4 for production
       londonSlang: true
     };
 

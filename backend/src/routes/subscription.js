@@ -111,12 +111,14 @@ router.post('/pay-per-query', auth, async (req, res) => {
     }
 
     // Create payment intent for single query
+    // NOTE: In production, payment should be confirmed on the client side
+    // after proper 3D Secure authentication. This auto-confirm is for demo only.
     const paymentIntent = await stripe.paymentIntents.create({
       amount: 50, // £0.50 in pence
       currency: 'gbp',
       customer: customerId,
       payment_method: paymentMethodId,
-      confirm: true,
+      confirm: true, // TODO: Remove in production, confirm on client with proper authentication
       description: 'Single AI query',
       return_url: process.env.FRONTEND_URL,
     });

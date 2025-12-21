@@ -69,6 +69,8 @@ const gangMembers = [
   }
 ];
 
+const THIRTY_DAYS_MS = 30 * 24 * 60 * 60 * 1000;
+
 // Initial challenges
 const challenges = [
   {
@@ -102,7 +104,7 @@ const challenges = [
     requirement: 'Login 7 consecutive days',
     pointsReward: 75,
     isActive: true,
-    expiresAt: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000) // 30 days from now
+    expiresAt: new Date(Date.now() + THIRTY_DAYS_MS)
   },
   {
     title: 'Gang Member',
