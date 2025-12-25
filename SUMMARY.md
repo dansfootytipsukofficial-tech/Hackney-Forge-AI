@@ -6,13 +6,25 @@ A complete, production-ready full-stack AI platform featuring:
 
 ### 🎯 Core Features
 
-**AI Gang Members (5 + Boss)**
-- Dalston AI - Creative Director
-- Clapton AI - Music Producer  
-- Shoreditch AI - Tech Developer
-- Stoke Newington AI - Business Strategist
-- Hackney Wick AI - Lifestyle Coach
-- Hackney Boss AI - Chief Overseer
+**AI Gang Members (11 + Boss)**
+
+👑 **HACKNEY BOSS AI** - THE BOSS - Chief Overseer
+- Strategic guidance, quality control, and coordination
+- Highest authority with authentic London boss energy
+- Awards 15 gang points per query
+
+**Specialist Gang Members:**
+1. **Dalston AI** - Creative Director (Writing, Branding, Marketing)
+2. **Clapton AI** - Music Producer & Audio Specialist (Beats, Lyrics, Sound)
+3. **Shoreditch AI** - Tech Developer (Coding, Apps, Digital Innovation)
+4. **Stoke Newington AI** - Business Strategist (Entrepreneurship, Growth, Finance)
+5. **Hackney Wick AI** - Lifestyle Coach (Wellness, Fitness, Personal Development)
+6. **Homerton AI** - Street Wisdom & Life Experience (Real Talk, Relationships)
+7. **Mare Street AI** - Education & Learning Specialist (Study, Career, Skills)
+8. **Victoria Park AI** - Culture & Entertainment Expert (Arts, Events, London Scene)
+9. **London Fields AI** - Food & Culinary Specialist (Cooking, Recipes, Restaurants)
+10. **Hackney Central AI** - General Knowledge & All-Rounder (Versatile Help)
+11. **De Beauvoir AI** - Writing & Communication Expert (Professional Writing, Emails)
 
 **User Features**
 - Free trial: 3 queries to get started
@@ -25,9 +37,10 @@ A complete, production-ready full-stack AI platform featuring:
 **AI Capabilities**
 - OpenAI GPT-3.5-turbo integration
 - Hugging Face API support
-- London slang responses (authentic, no stereotypes)
-- Uncensored, direct communication
+- Enhanced London slang (51+ authentic phrases, no stereotypes)
+- Uncensored, direct communication with proper London vibes
 - Custom AI model training
+- 12 specialized AI personalities (11 specialists + Boss)
 
 ### 📁 Project Structure
 
