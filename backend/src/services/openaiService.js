@@ -1,7 +1,8 @@
 const OpenAI = require('openai');
+const { isValidOpenAIKey } = require('../utils/apiKeyValidator');
 
 // Validate API key before initializing
-if (!process.env.OPENAI_API_KEY || process.env.OPENAI_API_KEY === 'your_openai_api_key_here' || process.env.OPENAI_API_KEY === 'PASTE_YOUR_OPENAI_API_KEY_HERE') {
+if (!isValidOpenAIKey(process.env.OPENAI_API_KEY)) {
   throw new Error('OpenAI API key is not configured. Please set OPENAI_API_KEY in your .env file.');
 }
 

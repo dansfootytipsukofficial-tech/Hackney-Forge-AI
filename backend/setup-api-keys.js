@@ -9,7 +9,7 @@
 
 const fs = require('fs');
 const path = require('path');
-const readline = require('readline');
+const { isValidOpenAIKey, isValidApiKey } = require('./src/utils/apiKeyValidator');
 
 const envPath = path.join(__dirname, '.env');
 const envExamplePath = path.join(__dirname, '.env.example');
@@ -56,12 +56,9 @@ envLines.forEach(line => {
   }
 });
 
-// Check OpenAI API key
+// Check OpenAI API key using shared validator
 const openaiKey = envVars.OPENAI_API_KEY || '';
-const hasOpenAIKey = openaiKey && 
-                     openaiKey !== 'your_openai_api_key_here' && 
-                     openaiKey !== 'PASTE_YOUR_OPENAI_API_KEY_HERE' &&
-                     openaiKey.startsWith('sk-');
+const hasOpenAIKey = isValidOpenAIKey(openaiKey);
 
 console.log(`${colors.bright}Configuration Status:${colors.reset}\n`);
 
@@ -73,9 +70,9 @@ if (hasOpenAIKey) {
   console.log(`${colors.yellow}  This is REQUIRED for the AI to work!${colors.reset}\n`);
 }
 
-// Check other optional keys
+// Check other optional keys using shared validator
 const huggingfaceKey = envVars.HUGGINGFACE_API_KEY || '';
-const hasHuggingfaceKey = huggingfaceKey && huggingfaceKey !== 'your_huggingface_api_key_here';
+const hasHuggingfaceKey = isValidApiKey(huggingfaceKey);
 
 if (hasHuggingfaceKey) {
   console.log(`${colors.green}✓ Hugging Face API Key: Configured (optional)${colors.reset}\n`);

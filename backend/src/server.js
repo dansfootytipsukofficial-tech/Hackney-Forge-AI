@@ -5,12 +5,13 @@ const helmet = require('helmet');
 const morgan = require('morgan');
 const connectDB = require('./config/database');
 const { apiLimiter } = require('./middleware/rateLimiter');
+const { isValidOpenAIKey } = require('./utils/apiKeyValidator');
 
 // Validate required environment variables
 function validateEnvironment() {
   const openaiKey = process.env.OPENAI_API_KEY;
   
-  if (!openaiKey || openaiKey === 'your_openai_api_key_here' || openaiKey === 'PASTE_YOUR_OPENAI_API_KEY_HERE') {
+  if (!isValidOpenAIKey(openaiKey)) {
     console.error('\n❌ ERROR: OpenAI API key is not configured!');
     console.error('\nTo fix this:');
     console.error('  1. Get your API key from: https://platform.openai.com/api-keys');
@@ -19,10 +20,6 @@ function validateEnvironment() {
     console.error('  4. Run: node setup-api-keys.js to validate\n');
     console.error('💡 Tip: New OpenAI accounts come with free credits!\n');
     process.exit(1);
-  }
-  
-  if (!openaiKey.startsWith('sk-')) {
-    console.warn('\n⚠️  WARNING: OpenAI API key format looks incorrect (should start with "sk-")\n');
   }
   
   console.log('✓ OpenAI API key configured');
