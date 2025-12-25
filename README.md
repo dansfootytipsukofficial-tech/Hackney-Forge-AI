@@ -7,12 +7,18 @@ Hackney Forge AI is a modern, full-stack AI platform featuring specialized AI ga
 ## ✨ Features
 
 ### AI Gang Members
+- **👑 Hackney Boss AI** - THE BOSS. Chief Overseer for strategic guidance and quality control
 - **Dalston AI** - Creative Director for writing, branding, and innovative ideas
-- **Clapton AI** - Music Producer for beats, lyrics, and audio
+- **Clapton AI** - Music Producer & Audio Specialist for beats, lyrics, and sound
 - **Shoreditch AI** - Tech Developer for coding and digital solutions
 - **Stoke Newington AI** - Business Strategist for entrepreneurship and growth
 - **Hackney Wick AI** - Lifestyle Coach for personal development and wellness
-- **Hackney Boss AI** - Chief Overseer for strategic guidance and quality control
+- **Homerton AI** - Street Wisdom & Life Experience for real talk
+- **Mare Street AI** - Education & Learning Specialist for study help
+- **Victoria Park AI** - Culture & Entertainment Expert for the London scene
+- **London Fields AI** - Food & Culinary Specialist for cooking and recipes
+- **Hackney Central AI** - General Knowledge & All-Rounder for anything
+- **De Beauvoir AI** - Writing & Communication Expert for professional writing
 
 ### Core Features
 - 🤖 **Chat with AI Gang Members** - Each with unique personalities and specialties
@@ -113,7 +119,8 @@ node src/seed.js
 ```
 
 This will populate the database with:
-- 5 AI gang members (Dalston, Clapton, Shoreditch, Stoke Newington, Hackney Wick)
+- 11 AI gang members from different Hackney areas, each with unique specialties
+- Hackney Boss AI as the chief overseer
 - Initial challenges for gamification
 
 ### 5. Run the Application

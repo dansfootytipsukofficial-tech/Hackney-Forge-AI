@@ -40,6 +40,56 @@
   transition: all 0.3s ease;
 }
 
+.gang-card.boss-card {
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.1) 0%, rgba(255, 140, 0, 0.1) 100%);
+  border: 2px solid rgba(255, 215, 0, 0.3);
+  font-weight: 600;
+}
+
+.gang-card.boss-card:hover {
+  border-color: rgba(255, 215, 0, 0.6);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 215, 0, 0.2);
+}
+
+.gang-card.boss-card h4 {
+  color: #FFD700;
+  font-size: 1.2rem;
+}
+
+.gang-card.boss-card .badge {
+  color: #FFD700;
+  font-size: 0.75rem;
+  margin-top: 0.5rem;
+  font-weight: 700;
+}
+
+.gang-divider {
+  margin: 1.5rem 0 1rem;
+  text-align: center;
+  position: relative;
+}
+
+.gang-divider::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--border-color);
+}
+
+.gang-divider span {
+  position: relative;
+  background: var(--bg-color);
+  padding: 0 1rem;
+  color: #888;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
 .gang-card.selected {
   border-color: var(--accent-color);
   background: rgba(0, 212, 255, 0.1);

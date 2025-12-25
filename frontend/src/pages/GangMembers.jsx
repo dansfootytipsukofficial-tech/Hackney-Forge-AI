@@ -34,10 +34,10 @@ function GangMembers() {
   const handleBossAI = () => {
     setSelectedMember({
       _id: 'boss',
-      name: 'Hackney Boss AI',
-      role: 'Chief AI Overseer',
+      name: '👑 Hackney Boss AI',
+      role: 'THE BOSS - Chief AI Overseer',
       londonArea: 'Central Hackney',
-      description: 'Strategic guidance and quality control from the boss himself'
+      description: 'Strategic guidance and quality control from THE BOSS himself. When you need the top-level view, proper authority, and real talk - you come to the Boss, innit.'
     });
     setConversation([]);
     setError('');
@@ -105,12 +105,17 @@ function GangMembers() {
             <h3>Choose Your AI</h3>
             
             <div 
-              className={`gang-card card ${selectedMember?._id === 'boss' ? 'selected' : ''}`}
+              className={`gang-card card boss-card ${selectedMember?._id === 'boss' ? 'selected' : ''}`}
               onClick={handleBossAI}
             >
               <h4>👑 Hackney Boss AI</h4>
-              <p className="role">Chief AI Overseer</p>
+              <p className="role">THE BOSS - Chief Overseer</p>
               <p className="area">Central Hackney</p>
+              <p className="badge">+15 points per query</p>
+            </div>
+
+            <div className="gang-divider">
+              <span>Gang Members</span>
             </div>
 
             {gangMembers.map((member) => (

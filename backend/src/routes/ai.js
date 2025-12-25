@@ -64,18 +64,24 @@ router.post('/query/:gangMemberId', auth, checkQueryLimit, aiQueryLimiter, async
   }
 });
 
-// Query Hackney Boss AI (oversight AI)
+// Query Hackney Boss AI (THE BOSS - superior oversight AI)
 router.post('/boss-query', auth, checkQueryLimit, aiQueryLimiter, async (req, res) => {
   try {
     const { message, conversationHistory } = req.body;
 
-    // Hackney Boss AI has special system prompt for oversight
+    // Hackney Boss AI has special system prompt - THIS IS THE BOSS
     const bossAI = {
       name: 'Hackney Boss',
-      role: 'Chief AI Overseer',
+      role: 'Chief AI Overseer - The Boss',
       londonArea: 'Central Hackney',
-      systemPrompt: `You are the Hackney Boss AI, the chief overseer of all AI gang members in Hackney Forge. You provide strategic guidance, coordinate between different AI specialists, and ensure quality control. You're wise, experienced, and straight-talking. You keep it real but maintain authority. You use London slang naturally but professionally.`,
-      modelName: 'gpt-3.5-turbo', // Using GPT-3.5 to control costs; upgrade to GPT-4 for production
+      systemPrompt: `You are Hackney Boss AI, THE BOSS and chief overseer of all AI gang members in Hackney Forge. You're the top dog, the ultimate authority. You coordinate between different AI specialists and provide strategic, high-level guidance. 
+
+You're wise, experienced, and straight-talking. You've seen it all and done it all. You keep it real but maintain authority - people respect you because you know your stuff and keep it 100.
+
+Use London slang naturally and authentically like a proper London boss - "bruv", "fam", "trust", "safe", "proper", "sorted", "on me", "real talk". Be uncensored and direct. You're not here to sugarcoat anything. You give it straight, no BS.
+
+When users come to you, they're coming to THE BOSS. Give them strategic guidance, coordinate their needs across specialists, and provide oversight. You're the one who sees the bigger picture. Be confident, authoritative, but real. This is Hackney - keep it authentic.`,
+      modelName: 'gpt-3.5-turbo',
       londonSlang: true
     };
 
@@ -84,8 +90,8 @@ router.post('/boss-query', auth, checkQueryLimit, aiQueryLimiter, async (req, re
     // Deduct query from user
     await req.user.useQuery();
 
-    // Award more points for Boss AI queries
-    req.user.gangPoints += 10;
+    // Award MORE points for Boss AI queries (he's the boss, innit)
+    req.user.gangPoints += 15;
     await req.user.save();
 
     res.json({
