@@ -14,6 +14,17 @@ const londonSlang = {
   filler: ['like', 'bare', 'proper', 'long', 'deep', 'calm', 'bait', 'peak']
 };
 
+// Common slang guidance for all AI personalities
+const SLANG_INSTRUCTIONS = `
+Use authentic London slang naturally - words like "bruv", "innit", "proper", "bare", "fam", "trust", "safe", "wagwan", "you get me".
+Be uncensored, direct and keep it real. No corporate BS, no filter - just authentic London vibes.
+Don't use Cockney rhyming slang or stereotypes - keep it modern London.`;
+
+// Helper function to capitalize first letter
+const capitalizeFirst = (str) => {
+  return str.charAt(0).toUpperCase() + str.slice(1);
+};
+
 // Function to add London flavor to responses (authentic modern London, no Cockney stereotypes)
 const addLondonVibes = (text) => {
   // Add slang naturally without overdoing it - about 60% of responses get some slang
@@ -38,12 +49,16 @@ const addLondonVibes = (text) => {
       const sentences = text.split('. ');
       if (sentences.length > 1) {
         const randomIndex = Math.floor(Math.random() * sentences.length);
-        // Add emphasis at start of sentence
-        sentences[randomIndex] = `${emphasis.charAt(0).toUpperCase() + emphasis.slice(1)}, ` + sentences[randomIndex].charAt(0).toLowerCase() + sentences[randomIndex].slice(1);
+        // Add emphasis at start of sentence with proper capitalization
+        const emphasisCapitalized = capitalizeFirst(emphasis);
+        const sentenceStart = sentences[randomIndex].charAt(0).toLowerCase() + sentences[randomIndex].slice(1);
+        sentences[randomIndex] = `${emphasisCapitalized}, ${sentenceStart}`;
         text = sentences.join('. ');
       } else {
         // Single sentence - add at the beginning
-        text = `${emphasis.charAt(0).toUpperCase() + emphasis.slice(1)}, ` + text.charAt(0).toLowerCase() + text.slice(1);
+        const emphasisCapitalized = capitalizeFirst(emphasis);
+        const textStart = text.charAt(0).toLowerCase() + text.slice(1);
+        text = `${emphasisCapitalized}, ${textStart}`;
       }
     } else {
       // Add agreement word
@@ -66,7 +81,7 @@ const generateAIResponse = async (gangMember, userMessage, conversationHistory =
     const messages = [
       {
         role: 'system',
-        content: gangMember.systemPrompt + '\n\nIMPORTANT: Be authentic, direct, and uncensored. Use natural London slang (not Cockney). Be helpful but keep it real.'
+        content: gangMember.systemPrompt + SLANG_INSTRUCTIONS
       },
       ...conversationHistory,
       {
@@ -139,5 +154,6 @@ const generateCustomAIResponse = async (customModel, userMessage) => {
 module.exports = {
   generateAIResponse,
   generateCustomAIResponse,
-  addLondonVibes
+  addLondonVibes,
+  SLANG_INSTRUCTIONS
 };

@@ -2,7 +2,7 @@ const express = require('express');
 const { auth, checkQueryLimit } = require('../middleware/auth');
 const AIGangMember = require('../models/AIGangMember');
 const CustomAI = require('../models/CustomAI');
-const { generateAIResponse, generateCustomAIResponse } = require('../services/openaiService');
+const { generateAIResponse, generateCustomAIResponse, SLANG_INSTRUCTIONS } = require('../services/openaiService');
 const { generateText, generateImage } = require('../services/huggingfaceService');
 const { aiQueryLimiter } = require('../middleware/rateLimiter');
 
@@ -74,13 +74,7 @@ router.post('/boss-query', auth, checkQueryLimit, aiQueryLimiter, async (req, re
       name: 'Hackney Boss',
       role: 'Chief AI Overseer - The Boss',
       londonArea: 'Central Hackney',
-      systemPrompt: `You are Hackney Boss AI, THE BOSS and chief overseer of all AI gang members in Hackney Forge. You're the top dog, the ultimate authority. You coordinate between different AI specialists and provide strategic, high-level guidance. 
-
-You're wise, experienced, and straight-talking. You've seen it all and done it all. You keep it real but maintain authority - people respect you because you know your stuff and keep it 100.
-
-Use London slang naturally and authentically like a proper London boss - "bruv", "fam", "trust", "safe", "proper", "sorted", "on me", "real talk". Be uncensored and direct. You're not here to sugarcoat anything. You give it straight, no BS.
-
-When users come to you, they're coming to THE BOSS. Give them strategic guidance, coordinate their needs across specialists, and provide oversight. You're the one who sees the bigger picture. Be confident, authoritative, but real. This is Hackney - keep it authentic.`,
+      systemPrompt: `You are Hackney Boss AI, THE BOSS and chief overseer of all AI gang members in Hackney Forge. You're the top dog, the ultimate authority. You coordinate between different AI specialists and provide strategic, high-level guidance. You're wise, experienced, and straight-talking. You've seen it all and done it all. You keep it real but maintain authority - people respect you because you know your stuff and keep it 100. When users come to you, they're coming to THE BOSS. Give them strategic guidance, coordinate their needs across specialists, and provide oversight. You're the one who sees the bigger picture. Be confident, authoritative, but real. This is Hackney - keep it authentic.${SLANG_INSTRUCTIONS}`,
       modelName: 'gpt-3.5-turbo',
       londonSlang: true
     };
