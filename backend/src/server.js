@@ -6,6 +6,31 @@ const morgan = require('morgan');
 const connectDB = require('./config/database');
 const { apiLimiter } = require('./middleware/rateLimiter');
 
+// Validate required environment variables
+function validateEnvironment() {
+  const openaiKey = process.env.OPENAI_API_KEY;
+  
+  if (!openaiKey || openaiKey === 'your_openai_api_key_here' || openaiKey === 'PASTE_YOUR_OPENAI_API_KEY_HERE') {
+    console.error('\n❌ ERROR: OpenAI API key is not configured!');
+    console.error('\nTo fix this:');
+    console.error('  1. Get your API key from: https://platform.openai.com/api-keys');
+    console.error('  2. Open backend/.env file');
+    console.error('  3. Set OPENAI_API_KEY=sk-your-actual-key-here');
+    console.error('  4. Run: node setup-api-keys.js to validate\n');
+    console.error('💡 Tip: New OpenAI accounts come with free credits!\n');
+    process.exit(1);
+  }
+  
+  if (!openaiKey.startsWith('sk-')) {
+    console.warn('\n⚠️  WARNING: OpenAI API key format looks incorrect (should start with "sk-")\n');
+  }
+  
+  console.log('✓ OpenAI API key configured');
+}
+
+// Validate environment before starting
+validateEnvironment();
+
 // Import routes
 const authRoutes = require('./routes/auth');
 const aiRoutes = require('./routes/ai');

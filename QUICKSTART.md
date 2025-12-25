@@ -1,8 +1,73 @@
 # Quick Start Guide - Hackney Forge AI
 
-## 🚀 Fastest Way to Get Started
+## 🚀 Get Started in 5 Minutes
 
-### Option 1: Automated Setup (Recommended)
+### Prerequisites
+- Node.js 18+ installed
+- Free OpenAI account (get free credits!)
+
+### Step 1: Get Your OpenAI API Key 🔑
+
+1. Go to [https://platform.openai.com/api-keys](https://platform.openai.com/api-keys)
+2. Sign in or create a FREE account (new accounts get free credits!)
+3. Click "Create new secret key"
+4. **Copy the key** (starts with `sk-`) - save it somewhere safe!
+
+### Step 2: Install Dependencies
+
+```bash
+# From the project root directory
+npm install
+```
+
+### Step 3: Configure Your API Key
+
+```bash
+# Navigate to backend folder
+cd backend
+
+# Run the setup helper
+node setup-api-keys.js
+```
+
+This will guide you through configuration. When prompted:
+
+1. Open `backend/.env` in any text editor
+2. Find: `OPENAI_API_KEY=PASTE_YOUR_OPENAI_API_KEY_HERE`
+3. Replace with: `OPENAI_API_KEY=sk-your-actual-key-here`
+4. Save the file
+5. Run `node setup-api-keys.js` again to verify ✓
+
+### Step 4: Start the Application 🎉
+
+```bash
+# From the project root directory
+npm run dev
+```
+
+This starts both backend and frontend!
+
+### Step 5: Open the App 🌐
+
+Visit [http://localhost:5173](http://localhost:5173) in your browser.
+
+You're ready to chat with Hackney Boss AI! 🔥
+
+---
+
+## 🤖 Best Free Model
+
+Your OpenAI API key works with:
+- **gpt-3.5-turbo** (Recommended) - Fast, affordable, included in free tier
+- **gpt-4** (Premium) - More powerful but costs more per query
+
+The app defaults to **gpt-3.5-turbo** which is perfect for getting started!
+
+---
+
+## 🔧 Alternative Setup Methods
+
+### Option 1: Automated Setup (Quick)
 
 ```bash
 # Run the setup script
