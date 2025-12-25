@@ -20,8 +20,11 @@ Use authentic London slang naturally - words like "bruv", "innit", "proper", "ba
 Be uncensored, direct and keep it real. No corporate BS, no filter - just authentic London vibes.
 Don't use Cockney rhyming slang or stereotypes - keep it modern London.`;
 
-// Helper function to capitalize first letter
+// Helper function to capitalize first letter with input validation
 const capitalizeFirst = (str) => {
+  if (typeof str !== 'string' || str.length === 0) {
+    return str;
+  }
   return str.charAt(0).toUpperCase() + str.slice(1);
 };
 
