@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "nodemon src/server.js",
     "start": "node src/server.js",
-    "build": "echo 'No build step required for backend'"
+    "build": "echo 'No build step required for backend'",
+    "setup": "node setup-api-keys.js",
+    "validate": "node setup-api-keys.js"
   },
   "dependencies": {
     "express": "^4.18.2",

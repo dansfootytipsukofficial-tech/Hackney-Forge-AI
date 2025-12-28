@@ -51,12 +51,15 @@ Hackney Forge AI is a modern, full-stack AI platform featuring specialized AI ga
 
 ## 📦 Installation
 
+### Quick Start (5 Minutes) ⚡
+
+See [QUICKSTART.md](QUICKSTART.md) for the fastest way to get started!
+
 ### Prerequisites
 - Node.js 18+ 
-- MongoDB (local or Atlas)
-- OpenAI API key
-- Hugging Face API key (optional)
-- Stripe API keys (for payments)
+- Free OpenAI account ([get free credits!](https://platform.openai.com/signup))
+- MongoDB (local or free Atlas account) - optional for initial testing
+- Stripe API keys - optional (for payment features)
 
 ### 1. Clone the Repository
 ```bash
@@ -66,56 +69,44 @@ cd Hackney-Forge-AI
 
 ### 2. Install Dependencies
 ```bash
-# Install root dependencies
+# Install all dependencies at once
 npm install
+```
 
-# Install backend dependencies
+### 3. Configure Your OpenAI API Key 🔑
+
+**Get your API key:**
+1. Visit [https://platform.openai.com/api-keys](https://platform.openai.com/api-keys)
+2. Sign in or create a FREE account (new accounts get free credits!)
+3. Click "Create new secret key" and copy it (starts with `sk-`)
+
+**Add it to the project:**
+```bash
 cd backend
-npm install
-
-# Install frontend dependencies
-cd ../frontend
-npm install
+node setup-api-keys.js  # This will guide you through configuration
 ```
 
-### 3. Configure Environment Variables
-
-Create `backend/.env` file (use `backend/.env.example` as template):
+Or manually edit `backend/.env`:
 ```env
-# Server
-PORT=5000
-NODE_ENV=development
-
-# MongoDB
-MONGODB_URI=mongodb://localhost:27017/hackney-forge-ai
-
-# JWT Secret
-JWT_SECRET=your_super_secret_jwt_key_change_this_in_production
-
-# OpenAI API
-OPENAI_API_KEY=your_openai_api_key_here
-
-# Hugging Face API
-HUGGINGFACE_API_KEY=your_huggingface_api_key_here
-
-# Stripe
-STRIPE_SECRET_KEY=your_stripe_secret_key_here
-STRIPE_WEBHOOK_SECRET=your_stripe_webhook_secret_here
-
-# Business Model
-FREE_TRIAL_QUERIES=3
-SUBSCRIPTION_PRICE_MONTHLY=5.00
-PAY_PER_QUERY_PRICE=0.50
-CURRENCY=GBP
-
-# Frontend URL
-FRONTEND_URL=http://localhost:5173
+OPENAI_API_KEY=sk-your-actual-key-here
 ```
 
-### 4. Seed the Database
+### 4. Validate Your Setup ✅
+
+```bash
+cd backend
+npm run validate
+```
+
+You should see: `✓ All required API keys are configured!`
+
+### 5. Seed the Database (Optional)
+
+Only needed if you want pre-populated AI gang members:
 ```bash
 cd backend
 node src/seed.js
+cd ..
 ```
 
 This will populate the database with:
@@ -123,9 +114,9 @@ This will populate the database with:
 - Hackney Boss AI as the chief overseer
 - Initial challenges for gamification
 
-### 5. Run the Application
+### 6. Run the Application
 
-**Development mode (recommended):**
+**Start both frontend and backend:**
 ```bash
 # From root directory - runs both frontend and backend
 npm run dev
@@ -145,6 +136,25 @@ npm run dev
 The application will be available at:
 - Frontend: http://localhost:5173
 - Backend API: http://localhost:5000
+
+🎉 **You're ready! Open http://localhost:5173 and start chatting!**
+
+---
+
+## 💰 API Costs & Free Tier
+
+**OpenAI Pricing:**
+- New accounts get **$5 in free credits** (usually lasts 3-6 months)
+- **gpt-3.5-turbo**: ~$0.002 per 1000 tokens (very affordable!)
+- **gpt-4**: ~$0.03 per 1000 tokens (more powerful but pricier)
+
+The platform defaults to **gpt-3.5-turbo** to keep costs low. One typical chat message uses ~500 tokens (~$0.001).
+
+**Example costs:**
+- 1000 messages with gpt-3.5-turbo ≈ $1-2
+- Your free $5 credits = thousands of messages!
+
+---
 
 ## 🏗️ Project Structure
 
